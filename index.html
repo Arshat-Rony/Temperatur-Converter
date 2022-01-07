@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10rem;
+        }
+
+        .tempbox {
+            background-color: peru;
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            color: white;
+            display: flex;
+            font-size: 1.4rem;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            margin-top: 20px;
+            color: black;
+            border: 2px solid paleturquoise;
+            padding: 10px;
+            border-radius: 5px;
+            text-transform: capitalize;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: royalblue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="form">
+            <input type="number" class="input1" placeholder="0 degree celcious">
+            <input type="number" class="input2" placeholder="0 degree fahrenhite">
+            <button type="submit">Convert</button>
+        </form>
+        <div class="tempbox">
+
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    var form = document.querySelector(".form")
+    var celcious = document.querySelector(".input1");
+
+    var fahrenhite = document.querySelector(".input2");
+    var button = document.querySelector("button")
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var newCelcious = celcious.value;
+        celcious.value = '';
+        var newFahrenhite = fahrenhite.value;
+        fahrenhite.value = '';
+
+
+        if ((e.target[0] != -1) && (e.target[1])) {
+            var contentShower = document.querySelector(".tempbox")
+            var celciousValue = ((newFahrenhite - 32) / 9) * 5;
+            var fahrenhiteValue = ((newCelcious / 5) * 9) + 32;
+            contentShower.innerHTML = `${fahrenhiteValue} degree fahrenhite , ${celciousValue} degree celcious`
+            contentShower.addEventListener("click", function () {
+                contentShower.innerHTML = "";
+            })
+
+        }
+    });
+</script>
+
+</html>
